@@ -1,7 +1,7 @@
 const Routes = (obj)=>
     {
       
-      return obj['1_imports']
+      return 
     }
     
     module.exports = Routes
