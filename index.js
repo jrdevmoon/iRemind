@@ -1,26 +1,7 @@
-const data = {}
-data.root = __dirname
-data.app = `${data.root}/app`
+const FSM = require (`${__dirname}/fsm.js`)
 
-const appFiles = require ('fs').readdirSync (data.app)
-const appFilesPath = []
-const appNames = []
-const apps = {}
+const fsm = new FSM (__dirname + "/app")
 
-for (let a in appFiles)
-{
-  appFilesPath[a] = `${data.app}/${appFiles[a]}`
+fsm.search ('name', 'app')
 
-  appNames[a] = require ('path').parse (appFilesPath[a]).name
-
-  if (typeof require (appFilesPath[a]) ===  'function')
-  {
-    apps[appNames[a]] = require (appFilesPath[a]) (apps)
-  }
-  else
-  {
-    //apps[]
-  }
-}
-
-console.log (apps)
+console.dir (fsm, {depth: 20})
